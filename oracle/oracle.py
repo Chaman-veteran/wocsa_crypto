@@ -1,4 +1,4 @@
-from Crypto.Util.number import getPrime, inverse, long_to_bytes
+from Crypto.Util.number import getPrime, inverse
 from flag import FLAG
 from pwn import listen
 from math import gcd
@@ -17,18 +17,18 @@ class Challenge():
         while True:
             c.sendline(b'Do you want me to give you a ciphertext?')
             rep = c.recvline(keepends=False)
-            print(rep)
             if rep != b'yes':
                 break
             else:
                 p = getPrime(512)
                 q = getPrime(512)
-                while gcd(self.e, (p-1)*(q-1)) != 1:
-                    p = getPrime(512)
-                    q = getPrime(512)
-                d = inverse(self.e, (p-1)*(q-1))
                 N = p*q
-                c.sendline(long_to_bytes(N))
-                c.sendline(long_to_bytes(pow(FLAG, d, p*q)))
+                flag = pow(FLAG, self.e, p*q)
+
+                N = ('0' if len(hex(N))%2 != 0 else'')+hex(N)[2:]
+                flag = ('0' if len(hex(flag))%2 != 0 else'')+hex(flag)[2:]
+
+                c.sendline(str(N).encode())
+                c.sendline(str(flag).encode())
 
 Challenge().challenge()
