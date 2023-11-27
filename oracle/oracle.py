@@ -1,7 +1,6 @@
-from Crypto.Util.number import getPrime, inverse
+from Crypto.Util.number import getPrime
 from flag import FLAG
 from pwn import listen
-from math import gcd
 
 l = listen(port=13374)
 c = l.wait_for_connection()

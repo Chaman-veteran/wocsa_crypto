@@ -1,4 +1,4 @@
-from Crypto.Util.number import bytes_to_long, long_to_bytes
+from Crypto.Util.number import long_to_bytes
 from pwn import remote
 
 r = remote('localhost', int(13374))
