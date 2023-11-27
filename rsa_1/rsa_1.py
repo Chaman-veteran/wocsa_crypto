@@ -9,12 +9,8 @@ while gcd(e,(p-1)*(q-1)) != 1:
     p = getPrime(100)
     q = getPrime(100)
 
-d = inverse(e,(p-1)*(q-1))
 N = p*q
-
-K = RSA.construct((N,e,d))
-with open('rsa_1/privkey.pem','wb') as f:
-    f.write(K.export_key())
+K = RSA.construct((N,e))
 
 with open('rsa_1/pubkey.pem','wb') as f:
-    f.write(K.public_key().export_key())
+    f.write(K.export_key('OpenSSH'))
