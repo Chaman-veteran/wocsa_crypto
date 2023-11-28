@@ -14,3 +14,7 @@ K = RSA.construct((N,e))
 
 with open('rsa_1/pubkey.pem','wb') as f:
     f.write(K.export_key('OpenSSH'))
+
+# FOR DEBUG ONLY -ez writeup x)-
+with open('rsa_1/privkey.pem', 'wb') as f:
+    f.write(RSA.construct((N,e,inverse(e,(p-1)*(q-1)))).export_key(pkcs=8))
