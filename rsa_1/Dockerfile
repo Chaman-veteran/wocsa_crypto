@@ -1,13 +1,17 @@
 from alpine:3.18.4
 
-COPY flag.txt /tmp/flag.txt
-COPY pubkey.pem /tmp/authorized_keys
+copy flag.txt /tmp/flag.txt
+copy pubkey.pem /tmp/authorized_keys
 
-
-run mkdir /root/.ssh
-run mv /tmp/authorized_keys /root/.ssh
-run chmod 0600 /root/.ssh/authorized_keys
+run apk update; apk add --no-cache openssh \
+    && echo 'PubkeyAuthentication yes' >> /etc/ssh/sshd_config \
+    && mkdir /root/.ssh \
+    ; mv /tmp/authorized_keys /root/.ssh \
+    ; chmod 0600 /root/.ssh/authorized_keys
 
 expose 22
 
-entrypoint '/bin/sh'
+copy entrypoint.sh /
+run chmod +x /entrypoint.sh
+
+entrypoint '/entrypoint.sh'
