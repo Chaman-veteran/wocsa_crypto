@@ -7,7 +7,7 @@ print(r.recvline())
 Ns = list()
 flags = list()
 
-for _ in range(50):
+for _ in range(5):
     print(r.recvline())
     r.sendline(b'yes')
     N = r.recvline(keepends=False).decode()
