@@ -1,22 +1,17 @@
 from Crypto.Util.number import getPrime
 from flag import FLAG
-from pwn import listen
-
-l = listen(port=13374)
-c = l.wait_for_connection()
 
 class Challenge():
     def __init__(self):
         self.motd = b'Welcome. I can give you as many ciphertexts as you want, RSA is secure, so what can you do?.'
         self.e = 7
 
-
     def challenge(self):
-        c.sendline(self.motd)
+        print(self.motd)
         while True:
-            c.sendline(b'Do you want me to give you a ciphertext?')
-            rep = c.recvline(keepends=False)
-            if rep != b'yes':
+            print(b'Do you want me to give you a ciphertext?')
+            rep = input()
+            if not 'yes' in rep:
                 break
             else:
                 p = getPrime(512)
@@ -27,7 +22,11 @@ class Challenge():
                 N = ('0' if len(hex(N))%2 != 0 else'')+hex(N)[2:]
                 flag = ('0' if len(hex(flag))%2 != 0 else'')+hex(flag)[2:]
 
-                c.sendline(str(N).encode())
-                c.sendline(str(flag).encode())
+                print(N)
+                print(flag)
 
-Challenge().challenge()
+if __name__ == '__main__':
+    try:
+        Challenge().challenge()
+    except:
+        exit()

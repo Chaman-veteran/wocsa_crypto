@@ -1,13 +1,13 @@
 from Crypto.Util.number import long_to_bytes
 from pwn import remote
 
-r = remote('localhost', int(13374))
+r = remote('172.17.0.4', int(9999))
 
 print(r.recvline())
 Ns = list()
 flags = list()
 
-for _ in range(5):
+for _ in range(50):
     print(r.recvline())
     r.sendline(b'yes')
     N = r.recvline(keepends=False).decode()
