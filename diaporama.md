@@ -12,20 +12,15 @@ Natan Maillet
 ---
 
 ## Sommaire
-
-I. Objectifs et utilité de la cryptographie
-
-II. Plusieurs modes de chiffrement
-
-1. Cryptographie symétrique  
-
-2. Cryptographie asymétrique
-
-III. Outils pour faire de la cryptographie
+- [I. Objectifs de la cryptographie](#objectifs-de-la-cryptographie)
+- [II. Plusieurs méthodes de chiffrement](#plusieurs-méthodes-de-chiffrement)
+  - [Chiffrement symétrique](#1-chiffrement-symétrique)
+  - [Chiffrement asymétrique](#chiffrement-asymétrique)
+- [III. Outils](#iii-outils)
 
 ---
 
-### I. Objectifs de la cryptographie
+### Objectifs de la cryptographie
 
 * Transmettre des informations de façon sécurisée
 * Garantir quatre grands principes:
@@ -36,22 +31,20 @@ III. Outils pour faire de la cryptographie
 
 ---
 
-### II. Plusieurs modes de chiffrement
+### Plusieurs méthodes de chiffrement
 
 #### Chiffrement symétrique
 
 On utilise la même clef pour chiffrer et pour déchiffrer un message.
 
-#### chiffrement asymétrique
+#### Chiffrement asymétrique
 
 On utilise une clef plublique (non secrète) pour chiffrer un message, mais seul la clef privée associée à la clef publique permet de déchiffrer le message.
 
 ---
 
-## 1. Chiffrement symétrique
-
-
+## Chiffrement symétrique
 
 ---
 
-### III. Outils
+### Outils
