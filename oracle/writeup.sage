@@ -1,7 +1,11 @@
 from Crypto.Util.number import long_to_bytes
 from pwn import remote
 
+<<<<<<< Updated upstream
 r = remote('localhost', int(9999))
+=======
+r = remote('192.168.9.57', int(9999))
+>>>>>>> Stashed changes
 
 print(r.recvline())
 Ns = list()
