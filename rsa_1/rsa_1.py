@@ -12,6 +12,6 @@ while gcd(e,(p-1)*(q-1)) != 1:
 
 N = p*q
 K = RSA.construct((N,e))
-
+ 
 with open('rsa_1/pubkey.pem','wb') as f:
     f.write(K.export_key('OpenSSH'))
