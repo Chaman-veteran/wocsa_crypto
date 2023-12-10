@@ -1,3 +1,3 @@
 #!/bin/sh
-service ssh start
+service ssh restart
 exec /bin/bash
