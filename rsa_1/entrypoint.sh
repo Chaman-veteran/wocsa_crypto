@@ -1,4 +1,3 @@
 #!/bin/sh
-ssh-keygen -A
-exec /usr/sbin/sshd -D -e "$@" &
-exec /bin/sh
+service ssh start
+exec /bin/bash
