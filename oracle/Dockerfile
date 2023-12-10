@@ -1,8 +1,5 @@
 FROM python:3.9-slim-buster
 
-COPY docker_ed25519.pub /tmp/authorized_keys
-
-
 RUN apt-get update -y; \
     apt-get install -y lib32z1 xinetd iproute2 && \
     pip3 install pycryptodome && \
